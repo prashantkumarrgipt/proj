@@ -1,0 +1,13 @@
+/* p{
+    background-color: rgb(255, 242, 226);
+} */
+
+.bg-primary{
+    /* color: aqua; */
+    background-color: blueviolet !important;
+}
+
+/* .cat-img{
+    width: 20px  !important;
+    height: 20px  !important;
+} */
