@@ -1,0 +1,1 @@
+web:gunicorn app:shantvi_app

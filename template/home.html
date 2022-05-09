@@ -2,10 +2,14 @@
 
 {%block title%} Home Page{%endblock%}
 
+<link rel="stylesheet" href="css/style.css">
 {%block content%}
 
 <div class="container-custom">
 
+    <div class="home-img-cont">
+        <img src="/media/home-img.jpg" class="homeimg" alt="">
+    </div>
 
     <!-- Set up your HTML -->
     <div class="owl-carousel">
@@ -17,7 +21,7 @@
 
             <div class="img-container">
 
-                <img src="/media/{{cat.image}}" class="responsive-img cat-img" alt="">
+                <img src="/media/{{cat.image}}" class="responsive-img" alt="">
 
             </div>
             <div class="card-content">
@@ -59,7 +63,7 @@
                     </div>
                 </div>
                 <div class="col s12 m4">
-                    <img src="/media/{{p.image}}" class="responsive-img mt20" alt="">
+                    <img src="/media/{{p.image}}" class="responsive-img mt20" id="postimg"  alt="">
                 </div>
             </div>
                 

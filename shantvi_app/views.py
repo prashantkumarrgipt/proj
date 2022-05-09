@@ -30,3 +30,16 @@ def category(request, url):
     cat = Category.objects.get(url=url)
     posts = Post.objects.filter(cat=cat)
     return render(request, "category.html", {'cat': cat, 'posts': posts})
+
+def tool(request):
+    # load all the post from db(10)
+    # posts = Post.objects.all()[:11]
+    # # print(posts)
+
+    # cats = Category.objects.all()
+
+    # data = {
+    #     'posts': posts,
+    #     'cats': cats
+    # }
+    return render(request, 'tool.html')
