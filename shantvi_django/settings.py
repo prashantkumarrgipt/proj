@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-#o+b8)%c(tkhay*beb#b&n_=#xcp10cndn^tj99u^z4xezk)(w'
+SECRET_KEY = 'django-insecure-#o+b8)%c(tkhay*beb#b&n_=#xcp10cndn^tj99u^z4xezk)(w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -168,7 +168,7 @@ STATICFILES_FINDERS = (
 
 # DEBUG = False
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DATABASES = {
     'default': {
