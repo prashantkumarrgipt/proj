@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-#o+b8)%c(tkhay*beb#b&n_=#xcp10cndn^tj99u^z4xezk)(w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'shantvi_django.urls'
 
@@ -88,7 +89,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = []
+# AUTH_PASSWORD_VALIDATORS = []
 
 
 # Internationalization
@@ -155,16 +156,47 @@ STATICFILES_FINDERS = (
 # ...
 
 # Loading test/prod settings based on ENV settings
-ENV = os.environ.get('ENV')
+# ENV = os.environ.get('ENV')
 
-if ENV == 'prod':
-    try:
-        from .production_settings import *
-        MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware',)
-    except ImportError:
-        pass
+# if ENV == 'prod':
+#     try:
+#         from .production_settings import *
+#         MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware',)
+#     except ImportError:
+#         pass
 
 
+# DEBUG = False
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': '5432',
+    }
+}
+
+# Password validation (I removed them in the local settings)
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+]
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # Activate Django-heroku.
 django_heroku.settings(locals())
