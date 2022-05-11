@@ -111,6 +111,8 @@ STATIC_URL = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 
@@ -191,6 +193,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 SECURE_SSL_REDIRECT = True
@@ -199,4 +203,7 @@ CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
 # Activate Django-heroku.
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
+import dj_database_url 
+
+db_from_env = dj_database_url.config(conn_max_age = 600)
