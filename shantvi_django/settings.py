@@ -203,7 +203,7 @@ CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
 # Activate Django-heroku.
-# django_heroku.settings(locals())
-import dj_database_url 
+django_heroku.settings(locals())
+# import dj_database_url 
 
-db_from_env = dj_database_url.config(conn_max_age = 600)
+# db_from_env = dj_database_url.config(conn_max_age = 600)
